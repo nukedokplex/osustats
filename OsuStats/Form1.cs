@@ -39,7 +39,9 @@ namespace OsuStats
                 url = user.url;
                 pictureBox1.ImageLocation = user.image;
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-
+                
+                pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox2.ImageLocation = user.flag;
             }
             catch (Exception ex)
             {
