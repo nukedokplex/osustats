@@ -21,8 +21,10 @@ namespace OsuStats
         {
 
         }
+        static public string url;
         void GetInfo(string key)
         {
+            
             try
             {
                 OsuClient osu = new OsuClient(key);
@@ -33,16 +35,27 @@ namespace OsuStats
                 progressBar1.Value = Convert.ToInt32(Convert.ToString(user.level).Split('.')[1].Substring(0, 2));
                 label4.Text = "PP: " + Convert.ToString(user.pp_raw).Split('.')[0];
                 label6.Text = "Ранк: " + user.pp_rank + " (" + user.country + ": " + user.pp_country_rank + ")";
+                linkLabel1.Text = user.url;
+                url = user.url;
+                pictureBox1.ImageLocation = user.image;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            groupBox1.Show();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             GetInfo("your key here");
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(url);
         }
     }
 }
