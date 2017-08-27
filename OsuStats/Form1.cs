@@ -49,7 +49,7 @@ namespace OsuStats
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            GetInfo("your key here");
+            GetInfo("your key");
 
         }
 
